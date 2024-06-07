@@ -115,6 +115,13 @@ def generate_launch_description():
             ("detections", "tracking")
         ]
     )
+    
+    my_yolo_listener_cmd = Node(
+        package="my_yolo_listener",
+        executable="yolo_listener",
+        name="yolo_listener",
+        namespace=namespace
+    )
 
     ld = LaunchDescription()
 
@@ -130,5 +137,6 @@ def generate_launch_description():
     ld.add_action(detector_node_cmd)
     ld.add_action(tracking_node_cmd)
     ld.add_action(debug_node_cmd)
+    ld.add_action(my_yolo_listener_cmd)
 
     return ld
